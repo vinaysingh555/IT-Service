@@ -1,0 +1,46 @@
+{% extends "frontend/base.html" %}
+{% load widget_tweaks %}
+
+{% block body %}
+<section class="content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card card-info mt-5">
+          <div class="card-header text-center">
+            <h3 class="card-title">Subscription Information</h3>
+          </div>
+          <!-- /.card-header -->
+
+          <div class="card-body">
+            <form method="post" action="{% url 'subscribe-page'  service_id=service.id%}">
+              {% csrf_token %}
+
+              <div class="form-group">
+                <label for="service_name">Service Name</label>
+                <input type="text" class="form-control" id="service_name" name="service_name" value="{{ service_name }}" readonly>
+              </div>
+
+              <div class="form-group">
+                <label for="net_price">Net Price with GST</label>
+                <input type="text" class="form-control" id="net_price" name="net_price" value="{{ net_price }}" readonly>
+              </div>
+
+              {% include "elements/form.html" with form=form %}
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "frontend/base.html" %}
+{% load widget_tweaks %}
+
+{% block body %}
+<!-- Content Header (Page header) -->
+
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">service Information</h3>
+          </div>
+          <!-- /.card-header -->
+
+
+          <!-- /.card-footer -->
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Service Details</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th scope="row">Service Name</th>
+                  <td><h5>{{ services.service_name }}</h5></td>
+                </tr>
+                <tr>
+                  <th scope="row">Service Price</th>
+                  <td><h5>{{ services.service_price }}</h5></td>
+                </tr>
+                 <tr>
+                  <th scope="row">Payment Term</th>
+                  <td><h5>{{ services.payment_terms }}</h5></td>
+                </tr>
+                <tr>
+                  <th scope="row">Service Tax</th>
+                  <td><h5>{{ services.service_tax }}</h5></td>
+                </tr>
+                <tr>
+                  <th scope="row">Service Image</th>
+                  <td>
+                    <img src='{{ services.service_image.url }}' alt="Service Image" class="img-fluid" height="100px" width="600px">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
+<button style="margin-left:40%" class="btn btn-primary">
+  <a class="text-white" href="{% url 'subscription_page' services.id %}">Buy Service</a>
+</button>
+
+
+
+{% endblock %}
+
